@@ -188,6 +188,7 @@ export default function WorkerDashboard() {
           onClose={() => setActiveChat(null)}
         />
       )}
+      </div>
     </main>
   );
 }

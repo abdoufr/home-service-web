@@ -147,6 +147,7 @@ export default function ClientDashboard() {
           onClose={() => setActiveChat(null)}
         />
       )}
+      </div>
     </main>
   );
 }
