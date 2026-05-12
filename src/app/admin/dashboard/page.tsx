@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { db } from '@/lib/firebase';
-import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, getDoc, setDoc, addDoc } from 'firebase/firestore';
 import { Users, Settings, Grid, MessageSquare, ShieldCheck, ShieldAlert, Trash2, Clock } from 'lucide-react';
 import styles from './admin.module.css';
 import toast from 'react-hot-toast';
