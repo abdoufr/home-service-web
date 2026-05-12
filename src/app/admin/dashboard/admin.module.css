@@ -1,0 +1,177 @@
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  padding: 2rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar nav button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  text-align: left;
+  color: var(--text-muted);
+}
+
+.sidebar nav button:hover, .sidebar nav button.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.sidebar nav button.active {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+}
+
+.main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userInfo span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  background: var(--surface-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.approved { background: rgba(34, 197, 94, 0.1); color: var(--success); }
+.pending { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+.suspended { background: rgba(239, 68, 68, 0.1); color: var(--error); }
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.settingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.toggle {
+  background: var(--surface-light);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+.toggle.on {
+  background: var(--success);
+  color: white;
+}
+
+.catForm {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.catList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.catCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.msgCard {
+  margin-bottom: 1rem;
+}
+
+.msgHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.msgCard.unread {
+  border-left: 4px solid var(--primary);
+}
+
+@media (max-width: 768px) {
+  .adminLayout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 1rem;
+  }
+  .sidebar h2 { display: none; }
+  .sidebar nav { flex-direction: row; }
+}

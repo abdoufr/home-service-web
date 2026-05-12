@@ -1,0 +1,30 @@
+.wrapper {
+  padding: 4rem 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 3rem;
+  border-radius: 32px;
+  text-align: center;
+}
+
+.card h1 {
+  margin-bottom: 1rem;
+}
+
+.card p {
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form button {
+  justify-content: center;
+}
