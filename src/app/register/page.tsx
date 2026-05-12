@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, updateProfile, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
 import Link from 'next/link';
-import { User, Briefcase, Mail, Lock, UserCheck } from 'lucide-react';
+import { User, Briefcase, Mail, Lock, UserCheck, Chrome } from 'lucide-react';
 import styles from './register.module.css';
 import toast from 'react-hot-toast';
 
@@ -53,6 +53,32 @@ export default function Register() {
       toast.error(error.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      // For registration with Google, we use the selected role
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      if (!userDoc.exists()) {
+        await setDoc(doc(db, "users", user.uid), {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          role: role,
+          status: 'approved', // Google users are usually trusted
+          createdAt: serverTimestamp(),
+        });
+      }
+      
+      toast.success("Account created via Google!");
+      router.push('/dashboard');
+    } catch (error: any) {
+      toast.error(error.message);
     }
   };
 
@@ -113,6 +139,14 @@ export default function Register() {
 
           <button type="submit" className="btn-primary" disabled={loading}>
             {loading ? 'Creating account...' : 'Sign Up'}
+          </button>
+
+          <div className={styles.divider}>
+            <span>OR</span>
+          </div>
+
+          <button type="button" onClick={handleGoogleLogin} className={styles.googleBtn}>
+            <Chrome size={20} /> Continue with Google
           </button>
         </form>
 
