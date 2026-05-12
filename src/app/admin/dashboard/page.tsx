@@ -5,6 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { db } from '@/lib/firebase';
 import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, getDoc, setDoc, addDoc } from 'firebase/firestore';
 import { Users, Settings, Grid, MessageSquare, ShieldCheck, ShieldAlert, Trash2, Clock } from 'lucide-react';
+import Navbar from '@/components/Navbar/Navbar';
 import styles from './admin.module.css';
 import toast from 'react-hot-toast';
 
@@ -86,7 +87,9 @@ export default function AdminDashboard() {
   if (!isAdmin) return <div className="container">Access Denied</div>;
 
   return (
-    <div className={styles.adminLayout}>
+    <div className={styles.adminWrapper}>
+      <Navbar />
+      <div className={styles.adminLayout}>
       <aside className={`${styles.sidebar} glass`}>
         <h2 className="gradient-text">Admin</h2>
         <nav>
@@ -224,6 +227,7 @@ export default function AdminDashboard() {
           )}
         </section>
       </main>
+    </div>
     </div>
   );
 }

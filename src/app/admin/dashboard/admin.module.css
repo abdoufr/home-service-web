@@ -1,6 +1,10 @@
+.adminWrapper {
+  padding-top: var(--header-height);
+}
+
 .adminLayout {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
   background: var(--background);
 }
 

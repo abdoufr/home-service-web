@@ -6,6 +6,7 @@ import { db } from '@/lib/firebase';
 import { collection, query, onSnapshot, addDoc, serverTimestamp, where, doc, updateDoc } from 'firebase/firestore';
 import { Search, MapPin, Star, MessageSquare, XCircle } from 'lucide-react';
 import ChatModal from '@/components/Chat/ChatModal';
+import Navbar from '@/components/Navbar/Navbar';
 import styles from './client.module.css';
 import toast from 'react-hot-toast';
 
@@ -73,7 +74,9 @@ export default function ClientDashboard() {
   );
 
   return (
-    <div className="container">
+    <main style={{ paddingTop: 'var(--header-height)' }}>
+      <Navbar />
+      <div className="container">
       <header className={styles.header}>
         <h1>Find Services</h1>
         <div className={`${styles.searchBar} glass`}>
@@ -144,6 +147,6 @@ export default function ClientDashboard() {
           onClose={() => setActiveChat(null)}
         />
       )}
-    </div>
+    </main>
   );
 }

@@ -6,6 +6,7 @@ import { db } from '@/lib/firebase';
 import { collection, query, where, onSnapshot, doc, updateDoc, addDoc, serverTimestamp, deleteDoc } from 'firebase/firestore';
 import { Plus, Briefcase, Clock, CheckCircle, XCircle, MessageCircle, Trash2 } from 'lucide-react';
 import ChatModal from '@/components/Chat/ChatModal';
+import Navbar from '@/components/Navbar/Navbar';
 import styles from './worker.module.css';
 import toast from 'react-hot-toast';
 
@@ -71,7 +72,9 @@ export default function WorkerDashboard() {
   };
 
   return (
-    <div className="container">
+    <main style={{ paddingTop: 'var(--header-height)' }}>
+      <Navbar />
+      <div className="container">
       <div className={styles.header}>
         <h1>Worker Dashboard</h1>
         <button className="btn-primary" onClick={() => setShowAddOffer(true)}>
@@ -185,6 +188,6 @@ export default function WorkerDashboard() {
           onClose={() => setActiveChat(null)}
         />
       )}
-    </div>
+    </main>
   );
 }
