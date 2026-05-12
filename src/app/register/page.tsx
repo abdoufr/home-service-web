@@ -11,7 +11,7 @@ import styles from './register.module.css';
 import toast from 'react-hot-toast';
 
 export default function Register() {
-  const [role, setRole] = useState<'client' | 'worker'>('client');
+  const [role, setRole] = useState<'client' | 'worker' | 'admin'>('client');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
